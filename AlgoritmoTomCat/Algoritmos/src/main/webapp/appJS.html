@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Começando com JavaScript</title>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+		<div id="ladoalado">
+			<button onclick="numberPrimo()">Number Primo</button>
+			<button onclick="somatorio()">Somatorio</button>
+			<button onclick="fibo()">Fibonnaci</button>
+			<button onclick="mdc()">MDC</button>
+			<button onclick="qs()">Ordenação QuickSort</button>
+			<button onclick="contInt()">Contagem Inteiro</button>
+			<button onclick= "window.location.href = 'index.html';">Voltar</button>
+		</div>
+	</div>
+
+	<!-- NUMERO PRIMO -->
+	<script>
+        function numberPrimo(){
+            let sign = prompt("Qual numero vc quer saber sé e primo")
+            var num  = parseInt(sign)
+
+            function primeNumber(num) {
+                for (var divisor = 2; divisor < num; divisor++) 
+                if (num % divisor == 0) return false;
+                return true;
+            }
+
+            if(primeNumber(sign)){
+                confirm("Numero Primo!!!")
+            } else {
+                confirm("Numero não Primo!!!")
+            }
+        }
+    </script>
+	<!-- SOMATORIO -->
+	<script>
+        function somatorio(){
+            let sing = prompt("Quantas Sequencias quer somar ?")
+            let sq   = parseInt(sing)
+            let num;
+            let soma = 0
+
+            for(var i = 0;i < sq;i++){
+                num  = prompt("Digite o "+(i+1)+"º numero!")
+                num  = parseInt(num)
+                soma = soma +num
+            }
+
+            confirm("Sua soma total deu: "+soma)
+        }
+    </script>
+	<!-- JS FIBONACCI -->
+	<script>
+        function fibo(){
+            let num = prompt("Qual fibo vc quer saber?")
+                num = parseInt(num)
+            function GenerateFibonacci(number){
+                var       fibonacci = [];
+                fibonacci[0]        = 0;
+                fibonacci[1]        = 1;
+                for (var i = 2; i < number; i++) {
+                fibonacci[i] = fibonacci[i - 2] + fibonacci[i - 1];
+                }
+                return fibonacci;
+            }
+
+            if(num > 1){
+                var fi = GenerateFibonacci(num)
+                confirm("Sua fibo: "+fi)
+            } else if(num<1) confirm("Numero deve ser maior do que 1!!!")
+
+        }
+    </script>
+
+	<!-- MDC -->
+	<script>
+        function mdc(){
+            let prim = prompt("Informe o primeiro valor")
+            let sec  = prompt("Informe o segundo valor")
+                prim = parseInt(prim)
+                sec  = parseInt(sec)
+            var resto
+
+            do{
+                resto = prim % sec
+                prim  = sec
+                sec   = resto
+            }while(resto != 0)
+
+            confirm("Mdc: "+prim)
+        }
+    </script>
+
+	<!-- ORDENACAO QUICKSORT -->
+	<script>
+        function qs(){
+            function swap(items, leftIndex, rightIndex){
+                var   temp        = items[leftIndex];
+                items[leftIndex]  = items[rightIndex];
+                items[rightIndex] = temp;
+            }
+            function partition(items, left, right) {
+                var pivot = items[Math.floor((right + left) / 2)],   //middle element
+                    i     = left,                                    //left pointer
+                    j     = right;                                   //right pointer
+                while (i <= j) {
+                    while (items[i] < pivot) {
+                        i++;
+                    }
+                    while (items[j] > pivot) {
+                        j--;
+                    }
+                    if (i <= j) {
+                        swap(items, i, j); //sawpping two elements
+                        i++;
+                        j--;
+                    }
+                }
+                return i;
+            }
+
+            function quickSort(items, left, right) {
+                var index;
+                if (items.length > 1) {
+                    index = partition(items, left, right);  //index returned from partition
+                    if (left < index - 1) { //more elements on the left side of the pivot
+                        quickSort(items, left, index - 1);
+                    }
+                    if (index < right) { //more elements on the right side of the pivot
+                        quickSort(items, index, right);
+                    }
+                }
+                return items;
+            }
+            function getRandom(length) {
+                let array = []
+                for (let i = 0 ; i < length; i++){
+                    array.push(Math.floor(Math.random() * (99 - 1 + 1)) + 1);
+                }
+
+                return array
+            }
+
+            let lg    = prompt("Qual tamanho do array para ordenar (Array gerado com numeros aleatorios)")
+                lg    = parseInt(lg)
+            var vetor = getRandom(lg)
+            confirm("Vetor gerado aleatorio: "+ vetor)
+            var sortedArray = quickSort(vetor, 0, vetor.length - 1);
+            confirm("Vetor ordenado QuickSort: "+ sortedArray)
+        }           
+
+
+    </script>
+
+	<!-- Contagem Inteiro -->
+	<script>
+        function contInt(){
+            var lg = Number(prompt("Quantos numeros aleatorios voce quer de entrada??"))
+            let cont
+            if(Number.isInteger(lg) ){
+                confirm("Yes")
+            }else {
+                confirm("No")
+            }
+
+        }
+
+    </script>
+</body>
+</html>
