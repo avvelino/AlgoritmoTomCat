@@ -33,6 +33,8 @@ public class Controller extends HttpServlet {
 		System.out.println(action);
 		if (action.equals("/Js")) {
 			apJs(request, response);
+		} else if(action.equals("/Java")) {
+			apJv(request,response);
 		}
 
 	}
@@ -42,7 +44,7 @@ public class Controller extends HttpServlet {
 	}
 	
 	protected void apJv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("appJS.html");
+		response.sendRedirect("appJAVA.html");
 	}
 
 	/**
