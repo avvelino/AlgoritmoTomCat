@@ -5,6 +5,28 @@ public class algoritmosJava {
 	public algoritmosJava() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String nPrimo(String n) {
+		
+		int numero = Integer.parseInt(n);
+		if(ehPrimo(numero)) {
+			System.out.println("True");
+			return ("Numero "+numero+" e Primo");
+		} else {
+			System.out.println("False");
+			return ("Numero "+numero+" não e Primo");
+			
+		}
+		
+	}
+	
+    private static boolean ehPrimo(int numero) {
+        for (int j = 2; j < numero; j++) {
+            if (numero % j == 0)
+                return false;   
+        }
+        return true;
+    }
 
 	public void contagem(String nEntradas, String vt) {
 		String n = nEntradas;
